@@ -9,10 +9,10 @@ namespace Fundae.Player
         public float speed;
         public float rotationSpeed;
 
-        public GameObject objectToInstantiate;
+        public GameObject objectToInstantiate;  
 
-        private bool isInstantiated;
-        private GameObject objectInstance;
+        protected bool isInstantiated;
+        protected GameObject objectInstance;
 
         private void FixedUpdate()
         {
@@ -20,7 +20,7 @@ namespace Fundae.Player
             transform.Translate(Vector3.right * speed * Input.GetAxis("Vertical") * Time.fixedDeltaTime);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -29,7 +29,7 @@ namespace Fundae.Player
             }
         }
 
-        private void InstantiateObject()
+        protected virtual void InstantiateObject()
         {
             if (isInstantiated) 
             {
