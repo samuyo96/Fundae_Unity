@@ -14,7 +14,7 @@ namespace Fundae.Player
         protected bool isInstantiated;
         protected GameObject objectInstance;
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             transform.Rotate(Vector3.up * rotationSpeed * Input.GetAxis("Horizontal") * Time.fixedDeltaTime);
             transform.Translate(Vector3.right * speed * Input.GetAxis("Vertical") * Time.fixedDeltaTime);
