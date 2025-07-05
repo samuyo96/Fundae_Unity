@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Fundae.Player
 {
@@ -22,11 +23,21 @@ namespace Fundae.Player
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        }
 
+        private void Update()
+        {
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+        }
+
+        public void Dead()
+        {
+            Debug.Log("Player is dead!");
+            gameObject.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
